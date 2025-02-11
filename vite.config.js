@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/LandmarkDiner.github.io/', // Replace with your actual GitHub repo name
+  base: '/LandmarkDiner/', // Replace with your actual GitHub repo name
   build: {
     outDir: 'dist',
 }});
