@@ -1,27 +1,25 @@
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient("https://twplccttrbfxpvafykqi.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3cGxjY3R0cmJmeHB2YWZ5a3FpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzkxNjA5MTYsImV4cCI6MjA1NDczNjkxNn0.skCDMfIVGATUOrAQRu1AxaS4cbNoalslFqCNii5w7s0");
+function Menu() {
+    const [items, setItems] = useState([]);
 
-function App() {
-  const [menu, setItems] = useState([]);
+    useEffect(() => {
+        fetch("https://landmarkdiner.onrender.com/menu")
+            .then(response => response.json())
+            .then(data => setItems(data.items))
+            .catch(error => console.error("Error fetching data:", error));
+    }, []);
 
-  useEffect(() => {
-    getItems();
-  }, []);
-
-  async function getItems() {
-    const { data } = await supabase.from("menu").select();
-    setItems(data);
-  }
-
-  return (
-    <ul>
-      {menu.map((menu) => (
-        <li key={menu.name}>{menu.name}</li>
-      ))}
-    </ul>
-  );
+    return (
+        <div>
+            <h1>Menu</h1>
+            <ul>
+                {items.map(item => (
+                    <li key={item.id}>{item.name} - ${item.price}</li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
 export default App;
