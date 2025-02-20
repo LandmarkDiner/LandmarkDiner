@@ -1,25 +1,54 @@
 import { useEffect, useState } from "react";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './pages/home.jsx'
+import Menu from '/pages/menu.jsx'
+import About from '/pages/about.jsx'
+import Contact from '/pages/contact.jsx'
 function App() {
-    const [items, setItems] = useState([]);
+        return (
+          <Router>
+            <div>
+              {/* Navigation Bar */}
+              <nav style={styles.navbar}>
+                <ul style={styles.navList}>
+                  <li><Link to="/" style={styles.navItem}>Home</Link></li>
+                  <li><Link to="/about" style={styles.navItem}>About</Link></li>
+                  <li><Link to="/menu" style={styles.navItem}>Menu</Link></li>
+                  <li><Link to="/contact" style={styles.navItem}>Contact</Link></li>
+                </ul>
+              </nav>
+      
+              {/* Page Routes */}
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/contact" element={<Contact />} />
+              </Routes>
+            </div>
+          </Router>
+        );
+      }
 
-    useEffect(() => {
-        fetch("https://landmarkdiner.onrender.com/menu")
-            .then(response => response.json())
-            .then(data => setItems(data.items))
-            .catch(error => console.error("Error fetching data:", error));
-    }, []);
-
-    return (
-        <div>
-            <h1>Menu</h1>
-            <ul>
-                {items.map(item => (
-                    <li key={item.id}>{item.name}</li>
-                ))}
-            </ul>
-        </div>
-    );
-}
+      const styles = {
+        navbar: {
+          backgroundColor: "#333",
+          padding: "10px",
+          display: "flex",
+          justifyContent: "center"
+        },
+        navList: {
+          listStyle: "none",
+          display: "flex",
+          gap: "20px",
+          padding: "0",
+          margin: "0"
+        },
+        navItem: {
+          color: "white",
+          textDecoration: "none",
+          fontSize: "18px"
+        }
+      };
 
 export default App;

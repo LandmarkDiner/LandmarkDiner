@@ -22,4 +22,4 @@ const Menu = () => {
     );
 };
 
-export default menu;
+export default Menu;
