@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-const [items, setItems] = useState([]);
+const Menu = () => {
+    const [items, setItems] = useState([]);
 
     useEffect(() => {
         fetch("https://landmarkdiner.onrender.com/menu")
@@ -9,7 +10,7 @@ const [items, setItems] = useState([]);
             .catch(error => console.error("Error fetching data:", error));
     }, []);
 
-
+    return (
         <div>
             <h1>Menu</h1>
             <ul>
@@ -18,5 +19,7 @@ const [items, setItems] = useState([]);
                 ))}
             </ul>
         </div>
-  
-  export default Menu;
+    );
+};
+
+export default menu;
