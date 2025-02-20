@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/home";
+import Menu from "./pages/menu";
+import About from "./pages/about";
+import Contact from "./pages/contact";
 
-function Menu() {
+function App() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -12,14 +18,17 @@ function Menu() {
 
     return (
         <div>
-            <h1>Menu</h1>
-            <ul>
-                {items.map(item => (
-                    <li key={item.id}>{item.name}</li>
-                ))}
-            </ul>
+            <Router>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/menu" element={<Menu />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                </Routes>
+            </Router>
         </div>
     );
 }
 
-export default Menu;
+export default App;
