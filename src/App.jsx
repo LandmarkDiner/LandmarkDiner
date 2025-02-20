@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './pages/home.jsx'
-import Menu from '/pages/menu.jsx'
-import About from '/pages/about.jsx'
-import Contact from '/pages/contact.jsx'
+import Menu from './pages/menu.jsx'
+import About from './pages/about.jsx'
+import Contact from './pages/contact.jsx'
 function App() {
         return (
           <Router>
