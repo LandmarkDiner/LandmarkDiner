@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from './pages/home.jsx'
 import Menu from './pages/menu.jsx'
 import About from './pages/about.jsx'
