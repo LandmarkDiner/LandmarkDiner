@@ -1,0 +1,68 @@
+/* Navbar Container */
+.navbar {
+    position: fixed;  /* Stays at the top of the screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #b22222; /* Classic diner red */
+    padding: 15px 20px;
+    z-index: 1000; /* Ensures it's above other elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a slight shadow for depth */
+  }
+
+  /* .navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  } */
+  
+  .navbar-brand {
+    font-family: var(--font-playfair);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* Navbar List */
+  .navList {
+    display: flex;
+    justify-content: flex-end; /* Pushes everything to the right */
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Navbar Items */
+  .navItem {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    font-weight: bold;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    border-radius: 5px;
+  }
+  
+  /* Navbar Hover Effect */
+  .navItem:hover {
+    transform: translateY(-3px);  /* Slight raise effect */
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Ensure Last Item Has Extra Padding */
+  .navList li:last-child {
+    padding-right: 30px; /* Keeps the last item from touching the screen edge */
+  }
+  
+  /* Responsive Fixes */
+  @media (max-width: 768px) {
+    .navList {
+      justify-content: center; /* Centers items on smaller screens */
+    }
+  }
+  
