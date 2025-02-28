@@ -1,6 +1,7 @@
 "use client"
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import landmarkLogo from './assets/landmarkLogo.png'
 import { useState } from "react"
 import Home from "./pages/home"
 import About from "./pages/about"
@@ -18,9 +19,9 @@ function App() {
         {/* Navigation Bar */}
         <header className="navbar">
           <div className="navbar-container">
-            <Link to="//" className="navbar-brand">
-              <img src="/assets/landmarkLogo.png"/>
-            </Link>
+          <Link to="//" className="navbar-brand">
+            <img src={landmarkLogo || "/placeholder.svg"} alt="Landmark Diner Logo" className="navbar-logo"/>
+          </Link>
 
             {/* Mobile menu button */}
             <button className="mobile-menu-button" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">

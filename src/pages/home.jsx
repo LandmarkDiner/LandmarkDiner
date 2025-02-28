@@ -9,7 +9,6 @@ export default function Home() {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="container text-center">
-            <span className="badge">A Rome, GA Tradition</span>
             <h1 className="hero-title">Landmark Diner</h1>
             <p className="hero-subtitle">Where every meal feels like home</p>
             <div className="hero-buttons">

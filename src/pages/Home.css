@@ -1,10 +1,6 @@
-* {
-    padding-top: 100px;
-}
-
 .hero {
     position: relative;
-    height: 70vh;
+    height: 60vh;
     background-image: url("/path-to-your-hero-image.jpg");
     background-size: cover;
     background-position: center;
@@ -18,7 +14,6 @@
   }
   
   .hero-content {
-    padding-top: 40px;
     position: relative;
     z-index: 1;
     height: 100%;
@@ -40,7 +35,7 @@
   }
   
   .badge {
-    display: inline-flex;
+    display: inline-block;
     padding: 0.5rem 1rem;
     background-color: var(--primary-color);
     color: white;
@@ -90,17 +85,25 @@
     color: var(--text-color);
   }
   
+  /* Info Bar Styles */
   .info-bar {
     background-color: var(--primary-color);
     color: white;
     padding: 1rem 0;
   }
   
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
   .info-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 20px; 
-    align-items: center;
+    grid-template-columns: 1fr 1fr; /* Forces exactly two columns */
+    gap: 2rem;
+    max-width: 1000px; /* Constrains the width to prevent too much spacing */
+    margin: 0 auto; /* Centers the grid */
   }
   
   .info-item {
@@ -108,12 +111,19 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    padding: 0 1rem;
+    text-align: center;
   }
   
   .info-icon {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 20px;
+    height: 20px;
   }
+  
+  /* Add a divider between items */
+  /* .info-item:first-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+  } */
   
   .section-title {
     font-family: var(--font-playfair);
@@ -221,6 +231,23 @@
   @media (min-width: 1024px) {
     .hero-title {
       font-size: 5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 3rem;
+    }
+  
+    .info-grid {
+      grid-template-columns: 1fr; /* Stack on mobile */
+      gap: 1rem;
+    }
+  
+    .info-item:first-child {
+      border-right: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 1rem;
     }
   }
   

@@ -1,68 +1,130 @@
-/* Navbar Container */
 .navbar {
-    position: fixed;  /* Stays at the top of the screen */
+    position: sticky;
     top: 0;
-    left: 0;
+    z-index: 50;
     width: 100%;
-    background-color: #b22222; /* Classic diner red */
-    padding: 15px 20px;
-    z-index: 1000; /* Ensures it's above other elements */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a slight shadow for depth */
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem 0;
   }
-
-  /* .navbar-container {
+  
+  .navbar-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 0 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  } */
+    height: 70px; /* Add fixed height for consistent alignment */
+  }
+  
+  .navbar-logo {
+    height: 40px; /* Adjust this value based on your logo size */
+    width: auto;
+    vertical-align: middle;
+  }
   
   .navbar-brand {
-    font-family: var(--font-playfair);
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
+    display: flex;
+    align-items: center;
     text-decoration: none;
+    padding: 0.5rem 0;
   }
   
-  /* Navbar List */
+  .mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+  }
+  
+  .menu-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
   .navList {
     display: flex;
-    justify-content: flex-end; /* Pushes everything to the right */
-    gap: 20px;
+    align-items: center;
+    gap: 2rem;
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
   
-  /* Navbar Items */
   .navItem {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+  }
+  
+  .navItem:hover {
+    color: var(--primary-color);
+  }
+  
+  .order-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
     color: white;
     text-decoration: none;
-    font-size: 18px;
-    padding: 10px 15px;
-    font-weight: bold;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-    border-radius: 5px;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
   }
   
-  /* Navbar Hover Effect */
-  .navItem:hover {
-    transform: translateY(-3px);  /* Slight raise effect */
-    background-color: rgba(255, 255, 255, 0.2);
+  .order-button:hover {
+    background-color: var(--primary-color-dark);
   }
   
-  /* Ensure Last Item Has Extra Padding */
-  .navList li:last-child {
-    padding-right: 30px; /* Keeps the last item from touching the screen edge */
-  }
-  
-  /* Responsive Fixes */
   @media (max-width: 768px) {
+    .mobile-menu-button {
+      display: block;
+    }
+  
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--background-color);
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+  
+    .nav-menu.active {
+      display: block;
+    }
+  
     .navList {
-      justify-content: center; /* Centers items on smaller screens */
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+  
+    .navItem {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 0;
+    }
+  
+    .order-online {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+  
+    .order-button {
+      display: block;
+      text-align: center;
+      width: 100%;
     }
   }
+  
   

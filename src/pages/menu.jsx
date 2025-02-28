@@ -15,11 +15,11 @@ const Menu = () => {
         setItems(data.items)
         setLoading(false)
       })
-      .catch((error) => {
-        console.error("Error fetching data:", error)
-        setError("Failed to load menu items. Please try again later.")
-        setLoading(false)
-      })
+    //   .catch((error) => {
+    //     console.error("Error fetching data:", error)
+    //     setError("Failed to load menu items. Please try again later.")
+    //     setLoading(false)
+    //   })
   }, [])
 
   if (error) {
@@ -47,6 +47,7 @@ const Menu = () => {
           <div className="loading-state">
             <div className="loading-spinner"></div>
             <p>Loading menu items...</p>
+            <p>(This could take up to a minute)</p>
           </div>
         ) : (
           <div className="menu-grid">
