@@ -1,6 +1,6 @@
 "use client"
 
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import { HashRouter as Router, Routes, Route, Link } from "react-router-dom"
 import landmarkLogo from './assets/landmarkLogo.png'
 import { useState } from "react"
 import Home from "./pages/home"
@@ -14,14 +14,14 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <Router basename="/LandmarkDiner">
+    <Router>
       <div className="app">
         {/* Navigation Bar */}
         <header className="navbar">
           <div className="navbar-container">
-          <Link to="//" className="navbar-brand">
-            <img src={landmarkLogo || "/placeholder.svg"} alt="Landmark Diner Logo" className="navbar-logo"/>
-          </Link>
+            <Link to="/" className="navbar-brand">
+              <img src={landmarkLogo || "/placeholder.svg"} alt="Landmark Diner Logo" className="navbar-logo"/>
+            </Link>
 
             {/* Mobile menu button */}
             <button className="mobile-menu-button" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
@@ -34,7 +34,7 @@ function App() {
             <nav className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
               <ul className="navList">
                 <li>
-                  <Link to="//" className="navItem" onClick={() => setIsMenuOpen(false)}>
+                  <Link to="/" className="navItem" onClick={() => setIsMenuOpen(false)}>
                     Home
                   </Link>
                 </li>
@@ -61,7 +61,7 @@ function App() {
         {/* Page Routes */}
         <main className="main-content">
           <Routes>
-            <Route path="//" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/contact" element={<Contact />} />
@@ -73,4 +73,3 @@ function App() {
 }
 
 export default App
-
