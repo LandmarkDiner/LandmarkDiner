@@ -12,7 +12,9 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.20.6",
     "@supabase/supabase-js": "^2.48.1",
+    "framer-motion": "^12.6.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.5"

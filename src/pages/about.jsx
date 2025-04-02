@@ -18,7 +18,7 @@ export default function About() {
         <div className="about-container">
           <div className="history-grid">
             <div className="history-content">
-              <h2>A Rome Tradition</h2>
+              <h2 className="section-title">A Rome Tradition</h2>
               <p>
                 Landmark Diner has been a cornerstone of the Rome, Georgia community 
                 for over half a century. What started as a small family-owned 
@@ -85,50 +85,6 @@ export default function About() {
                 Our recipes have been perfected over generations to bring you the 
                 best home-style cooking.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="about-section">
-        <div className="about-container">
-          <div className="team-content">
-            <h2>Meet Our Family</h2>
-            <p className="team-intro">
-              The heart and soul of Landmark Diner is our dedicated team, many of 
-              whom have been with us for decades. From our kitchen staff to our 
-              servers, each member of our team contributes to creating the warm, 
-              welcoming atmosphere that our customers have come to love.
-            </p>
-          </div>
-          <div className="team-grid">
-            <div className="team-member">
-              <img 
-                src="/placeholder.svg?height=300&width=300" 
-                alt="John Smith"
-                className="team-image"
-              />
-              <h3>John Smith</h3>
-              <p className="team-role">Owner</p>
-            </div>
-            <div className="team-member">
-              <img 
-                src="/placeholder.svg?height=300&width=300" 
-                alt="Mary Johnson"
-                className="team-image"
-              />
-              <h3>Mary Johnson</h3>
-              <p className="team-role">Head Chef</p>
-            </div>
-            <div className="team-member">
-              <img 
-                src="/placeholder.svg?height=300&width=300" 
-                alt="Robert Davis"
-                className="team-image"
-              />
-              <h3>Robert Davis</h3>
-              <p className="team-role">Manager</p>
             </div>
           </div>
         </div>

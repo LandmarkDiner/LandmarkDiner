@@ -34,7 +34,7 @@
     margin-bottom: 2rem;
   }
   
-  .badge {
+  /* .badge {
     display: inline-block;
     padding: 0.5rem 1rem;
     background-color: var(--primary-color);
@@ -47,7 +47,7 @@
   .badge-light {
     background-color: white;
     color: var(--primary-color);
-  }
+  } */
   
   .hero-buttons {
     display: flex;
@@ -99,9 +99,9 @@
   }
   
   .info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Forces exactly two columns */
-    gap: 2rem;
+    display: flex;
+    grid-template-columns: repeat(2, 1fr); /* Forces exactly two columns */
+    gap: 20rem;
     max-width: 1000px; /* Constrains the width to prevent too much spacing */
     margin: 0 auto; /* Centers the grid */
   }
@@ -127,13 +127,26 @@
   
   .section-title {
     font-family: var(--font-playfair);
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 1rem 0;
+  }
+
+  .section-title-white {
+    font-family: var(--font-playfair);
     font-size: 2.5rem;
     font-weight: 700;
     margin: 1rem 0;
   }
   
+  .about-text {
+    color: var(--text-color);
+    margin-bottom: 2rem;
+  }
+
   .section-text {
-    color: var(--text-muted);
+    color: white;
     margin-bottom: 2rem;
   }
   

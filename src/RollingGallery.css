@@ -1,0 +1,43 @@
+.review-carousel {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  .carousel-track {
+    display: flex;
+    gap: 20px;
+    min-width: 100%;
+    white-space: nowrap;
+  }
+  
+  .review-card {
+    flex: 0 0 calc(100% / 3 - 20px); /* Shows 3 cards at a time */
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-height: 200px;
+  }
+  
+  .stars {
+    color: red;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .review-text {
+    font-style: italic;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  
+  .review-author {
+    font-size: 16px;
+    color: #222;
+  }
+  

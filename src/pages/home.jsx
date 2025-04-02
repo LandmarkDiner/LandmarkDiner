@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
-import "./Home.css"
+import "./home.css"
+import RollingGallery from "../RollingGallery"
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="container text-center">
-            <h1 className="hero-title">Landmark Diner</h1>
+            <h1 className="hero-title">Landmark Restaurant</h1>
             <p className="hero-subtitle">Where every meal feels like home</p>
             <div className="hero-buttons">
               <Link to="/menu" className="button button-primary">
@@ -33,7 +34,7 @@ export default function Home() {
             </div>
             <div className="info-item">
               <svg className="info-icon" /* Add your clock icon SVG here */ />
-              <span>Open Today: 6:00 AM - 9:00 PM</span>
+              <span>Open Today: 7:00 AM - 8:00 PM</span>
             </div>
           </div>
         </div>
@@ -45,7 +46,7 @@ export default function Home() {
           <div className="grid grid-cols-2">
             <div className="about-content">
               <h2 className="section-title">A Local Favorite in Rome</h2>
-              <p className="section-text">
+              <p className="about-text">
                 Landmark Diner has been serving the Rome community with love and dedication. Our commitment to quality
                 food and friendly service has made us a beloved destination for locals and visitors alike.
               </p>
@@ -63,7 +64,7 @@ export default function Home() {
       {/* Menu Preview */}
       <section className="section section-gray">
         <div className="container text-center">
-          <span className="badge">Our Specialties</span>
+          {/* <span className="badge">Our Specialties</span> */}
           <h2 className="section-title">Family Favorites</h2>
           <p className="section-text">
             From breakfast classics to dinner specialties, our menu has something for everyone.
@@ -106,9 +107,8 @@ export default function Home() {
       {/* Testimonials */}
       <section className="section">
         <div className="container text-center">
-          <span className="badge">Customer Reviews</span>
+          {/* <span className="badge">Customer Reviews</span> */}
           <h2 className="section-title">What Our Guests Say</h2>
-
           <div className="grid grid-cols-3">
             {[
               {
@@ -137,12 +137,12 @@ export default function Home() {
       {/* CTA Section */}
       <section className="section cta-section">
         <div className="container text-center">
-          <span className="badge badge-light">Visit Us Today</span>
-          <h2 className="section-title text-white">Join Us for a Meal</h2>
+          {/* <span className="badge badge-light">Visit Us Today</span> */}
+          <h2 className="section-title-white">Join Us for a Meal</h2>
           <p className="section-text text-white">Whether it's breakfast, lunch, or dinner, we're here to serve you.</p>
           <div className="cta-buttons">
             <Link to="/contact" className="button button-white">
-              Make a Reservation
+              Contact Us
             </Link>
             <Link to="/menu" className="button button-outline-white">
               View Our Menu
