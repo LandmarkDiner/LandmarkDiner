@@ -107,7 +107,7 @@ const Menu = () => {
                     </div>
 
                     <div className="filter-container">
-                        {categories.map((category) => (
+                        {/* {categories.map((category) => (
                             <button
                                 key={category.id}
                                 className={`filter-button ${activeFilter === category.id ? "active" : ""}`}
@@ -115,11 +115,11 @@ const Menu = () => {
                             >
                                 {category.name}
                             </button>
-                        ))}
+                        ))} */}
 
-                        {/* <select
+                        <select
                             value={activeFilter}
-                            onChange={handleFilterChange}
+                            onChange={(e) => handleFilterChange(e.target.value)}
                             className="allergen-dropdown"
                         >
                             {categories.map((category) => (
@@ -127,7 +127,7 @@ const Menu = () => {
                                     {category.name}
                                 </option>
                             ))}
-                        </select> */}
+                        </select>
 
                         <select
                             value={selectedAllergen}
