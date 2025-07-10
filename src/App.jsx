@@ -20,7 +20,7 @@ function Navigation() {
     <header className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
-          <img src={landmarkLogo || "/placeholder.svg"} alt="Landmark Diner Logo" className="navbar-logo"/>
+          <img src={landmarkLogo || "/placeholder.svg"} alt="Landmark Diner Logo" className="navbar-logo" style={{ height: '60px', width: 'auto' }}/>
         </Link>
 
         {/* Mobile menu button */}
@@ -53,16 +53,31 @@ function Navigation() {
                 Contact
               </Link>
             </li>
-            {/* <li>
-              <Link to="/admin" className={`navItem ${location.pathname === "/admin" ? "active" : ""}`} onClick={() => setIsMenuOpen(false)}>
-                Admin
-              </Link>
-            </li> */}
           </ul>
         </nav>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="mobile-dropdown">
+            <ul className="navListMobile">
+              <li>
+                <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
+              </li>
+              <li>
+                <Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+              </li>
+              <li>
+                <Link to="/menu" onClick={() => setIsMenuOpen(false)}>Menu</Link>
+              </li>
+              <li>
+                <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </header>
-  )
+  );
 }
 
 function App() {
@@ -83,7 +98,7 @@ function App() {
         </main>
 
         <footer className="footer">
-          <p>Created by Dylan Bloch and Bernny Velaszquez</p>
+          <p>Created by Dylan Bloch</p>
           <p> Copyright © 2025. All Rights Reserved</p>
         </footer>
       </div>

@@ -1,13 +1,58 @@
-import { Link } from "react-router-dom"
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./home.css"
-import RollingGallery from "../RollingGallery"
+import landmarkSign from '../assets/landmarkSign.jpg'
+import dessertImage from '../assets/dessert-image.png'
+import dessertImage2 from '../assets/dessert-image2.jpg'
+import dessertImage3 from '../assets/dessert-image3.jpg'
+import dessertImage4 from '../assets/dessert-image4.jpg'
+import lunchImage from '../assets/lunch-image.jpg'
+import lunchImage2 from '../assets/lunch-image2.jpg'
+import lunchImage5 from '../assets/lunch-image5.jpg'
+import breakfastImage2 from '../assets/breakfast-image2.jpg'
+import breakfastImage3 from '../assets/breakfast-image3.jpg'
+import breakfastImage4 from '../assets/breakfast-image4.jpg'
+
+const menuSections = [
+  {
+    title: "Breakfast Classics",
+    description: "Start your day with one of our famous breakfast platters",
+    images: [breakfastImage2, breakfastImage3, breakfastImage4],
+  },
+  {
+    title: "Lunch Favorites",
+    description: "Sandwiches, salads, and daily lunch specials",
+    images: [lunchImage, lunchImage2, lunchImage5],
+  },
+  {
+    title: "Irresistible Desserts",
+    description: "Make sure to save room for one of our famous desserts",
+    images: [dessertImage, dessertImage2, dessertImage3, dessertImage4],
+  },
+];
+
 
 export default function Home() {
+  const [indexes, setIndexes] = useState(Array(menuSections.length).fill(0));
+
+  const handlePrev = (i) => {
+    setIndexes((prev) =>
+      prev.map((val, idx) => (idx === i ? (val === 0 ? menuSections[i].images.length - 1 : val - 1) : val))
+    );
+  };
+
+  const handleNext = (i) => {
+    setIndexes((prev) =>
+      prev.map((val, idx) => (idx === i ? (val === menuSections[i].images.length - 1 ? 0 : val + 1) : val))
+    );
+  };
+
   return (
     <div className="home">
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-overlay"></div>
+        {/* <img src={landmarkSign || "/placeholder.svg"} alt="Landmark Diner Sign"/> */}
         <div className="hero-content">
           <div className="container text-center">
             <h1 className="hero-title">Landmark Restaurant</h1>
@@ -55,7 +100,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="about-image">
-              <img src="/path-to-your-image.jpg" alt="Inside Landmark Diner" />
+              <img src={landmarkSign} alt="Inside Landmark Diner"/>
             </div>
           </div>
         </div>
@@ -64,40 +109,43 @@ export default function Home() {
       {/* Menu Preview */}
       <section className="section section-gray">
         <div className="container text-center">
-          {/* <span className="badge">Our Specialties</span> */}
           <h2 className="section-title">Family Favorites</h2>
           <p className="section-text">
             From breakfast classics to dinner specialties, our menu has something for everyone.
           </p>
 
-          <div className="grid grid-cols-3">
-            {[
-              {
-                title: "Breakfast Classics",
-                description: "Start your day with our famous breakfast platters",
-                image: "/path-to-breakfast-image.jpg",
-              },
-              {
-                title: "Lunch Favorites",
-                description: "Sandwiches, salads, and daily lunch specials",
-                image: "/path-to-lunch-image.jpg",
-              },
-              {
-                title: "Home-Style Dinners",
-                description: "Comfort food just like mom used to make",
-                image: "/path-to-dinner-image.jpg",
-              },
-            ].map((item, index) => (
-              <div key={index} className="menu-card">
-                <img src={item.image || "/placeholder.svg"} alt={item.title} />
-                <div className="menu-card-content">
+          <div className="grid grid-cols-3 gap-4">
+            {menuSections.map((item, i) => (
+              <div key={i} className="menu-card relative round overflow-hidden">
+                <div className="image-wrapper w-full h-[200px] relative">
+                  <img
+                    src={item.images[indexes[i]]}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover rounded"
+                  />
+                </div>
+
+                <button
+                  onClick={() => handlePrev(i)}
+                  className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white bg-opacity-70 px-2 py-1 rounded-full"
+                >
+                  ◀
+                </button>
+                <button
+                  onClick={() => handleNext(i)}
+                  className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-70 px-2 py-1 rounded-full"
+                >
+                  ▶
+                </button>
+                <div className="menu-card-content mt-4">
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
                 </div>
               </div>
             ))}
           </div>
-            <br></br>
+
+          <br />
           <Link to="/menu" className="button button-primary">
             View Full Menu
           </Link>
@@ -112,16 +160,16 @@ export default function Home() {
           <div className="grid grid-cols-3">
             {[
               {
-                quote: "Best diner in Rome! The breakfast is amazing and the staff treats you like family.",
-                author: "John D.",
+                quote: "Food was excellent waitress was great atmosphere is a little dated. I’m surprised this place has only 4.2 stars.. Should be well above 4.2 stars In my opinion.. I travel for work over 200 days per year so I stop at a lot of different breakfast places. This this place was very good.",
+                author: "Rohn Zimmerman",
               },
               {
-                quote: "Love their home-style cooking. It's our family's favorite spot for Sunday lunch.",
-                author: "Patricia M.",
+                quote: "Great breakfast! Nice server and decent service. Not as fast as Waffle House but the food was hot and tasted good. Great breakfast special for 5 bucks. If you want it fast, go to Waffle House. If you want it relaxed and hot food, go to Landmark.",
+                author: "Villa Marina",
               },
               {
-                quote: "Great food, friendly service, and cozy atmosphere. A true Rome gem!",
-                author: "Robert W.",
+                quote: "Food and service were great! Garlic grouper was excellent! Desserts are fabulous! Plenty of food! Like stepping back in time to the best diner!!",
+                author: "Rachel D.",
               },
             ].map((testimonial, index) => (
               <div key={index} className="testimonial-card">

@@ -1,4 +1,5 @@
 import './about.css';
+import landmarkBW from '../assets/landmarkBW.jpg'
 
 export default function About() {
   return (
@@ -9,7 +10,7 @@ export default function About() {
           <h1>Our Story</h1>
         </div>
         <div classname="hero-content">
-          <p>Serving Rome's community since 1965</p>
+          <p>Serving Rome's community since 1998</p>
         </div>
       </section>
 
@@ -22,7 +23,7 @@ export default function About() {
               <p>
                 Landmark Diner has been a cornerstone of the Rome, Georgia community 
                 for over half a century. What started as a small family-owned 
-                establishment in 1965 has grown into one of Rome's most beloved 
+                establishment in 1998 has grown into one of Rome's most beloved 
                 dining destinations.
               </p>
               <p>
@@ -34,7 +35,7 @@ export default function About() {
             </div>
             <div className="history-image">
               <img 
-                src="/placeholder.svg?height=400&width=600" 
+                src={landmarkBW} 
                 alt="Historic photo of Landmark Diner"
                 className="rounded-image"
               />
@@ -96,13 +97,13 @@ export default function About() {
           <div className="community-content">
             <h2>Part of the Community</h2>
             <p>
-              For over 50 years, we've been proud to be more than just a 
+              For over 25 years, we've been proud to be more than just a 
               restaurant – we're a part of the Rome community. From hosting local 
               events to supporting community initiatives, we believe in giving 
               back to the community that has given us so much.
             </p>
             <p>
-              We're grateful for the generations of customers who have made 
+              We're grateful for all of our customers who have made 
               Landmark Diner their go-to spot for family meals, celebrations, 
               and everyday dining.
             </p>

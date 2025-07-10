@@ -81,15 +81,20 @@
   .hours-grid .time {
     color: var(--text-muted, #6b7280);
   }
-  
+
   .social-links {
     display: flex;
     gap: 1rem;
+    align-items: center;
   }
-  
+
   .social-link {
-    color: var(--primary-color);
-    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--primary-color-dark);
   }
   
   .social-link:hover {
@@ -99,6 +104,7 @@
   .social-icon {
     width: 24px;
     height: 24px;
+    display: block;
   }
   
   /* Map Styles */

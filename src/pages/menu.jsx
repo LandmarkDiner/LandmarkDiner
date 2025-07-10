@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./menu.css";
+import Select from "react-select";
 
 const Menu = () => {
     const [items, setItems] = useState([]);
@@ -7,11 +8,13 @@ const Menu = () => {
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [activeFilter, setActiveFilter] = useState("all");
-    const [selectedAllergen, setSelectedAllergen] = useState("all");
+    const [activeSubFilter, setActiveSubFilter] = useState("all");
+    const [selectedAllergens, setSelectedAllergen] = useState([]);
+    const [showAllergenDropdown, setShowAllergenDropdown] = useState(false);
 
     // Function to fetch menu items from backend with filtering
     const fetchMenuItems = () => {
-        let url = `https://landmarkdiner.onrender.com/menu?category=${activeFilter}`;
+        let url = `https://landmarkdiner.onrender.com/menu?category=${activeFilter}&subcategory=${activeSubFilter}&allergens=${selectedAllergens}`;
         if (searchTerm) {
             url += `&search=${encodeURIComponent(searchTerm)}`;
         }
@@ -33,7 +36,7 @@ const Menu = () => {
     // Fetch menu items whenever the filter or search term changes
     useEffect(() => {
         fetchMenuItems();
-    }, [activeFilter, searchTerm]);
+    }, [activeFilter, searchTerm, activeSubFilter, selectedAllergens]);
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
@@ -41,32 +44,59 @@ const Menu = () => {
 
     const handleFilterChange = (categoryId) => {
         setActiveFilter(categoryId);
+        setActiveSubFilter("all");
     };
 
-    const handleAllergenChange = (e) => {
-        setSelectedAllergen(e.target.value);
+    const handleSubFilterChange = (subCategoryId) => {
+        setActiveSubFilter(subCategoryId);
+    }
+
+    const handleAllergenChange = (selectedOptions) => {
+        setSelectedAllergen(selectedOptions || []);
     };
 
     const categories = [
         { id: "all", name: "All Items" },
+        { id: "appetizer", name: "Appetizers" },
+        { id: "children", name: "Children's Menu" },
         { id: "breakfast", name: "Breakfast" },
         { id: "lunch", name: "Lunch" },
         { id: "dinner", name: "Dinner" },
-        { id: "drinks", name: "Drinks"},
-        { id: "dessert", name: "Dessert" },
+        { id: "drinks", name: "Beverages" },
+        { id: "desserts", name: "Desserts" },        
     ];
 
-    const allergens = [
-        "Allergens",
-        "Gluten",
-        "Dairy",
-        "Peanuts",
-        "Shellfish",
-        "Soy",
-        "Eggs",
-        "Nuts",
-    ];
+    const subCategories = {
+        breakfast: 
+            [
+                { id: "breakfast_all_day", name: "Breakfast Served All Day"},
+                { id: "egg", name: "Eggs & Omelettes" },
+                { id: "waffle/pancake/french_toast", name: "On the Griddle" },
+                { id: "breakfast_side", name: "Sides" },
+            ],
+        lunch: 
+            [
+                { id: "salad", name: "Salads" },
+                { id: "sandwich", name: "Sandwiches" },
+                { id: "lunch_special", name: "Lunch Specials"},
+                { id: "burger", name: "Burgers" },
+                { id: "mediterranean", name: "Greek & Mediterranean" },
+                { id: "lunch_side", name: "Sides" },
+            ],
+        dinner: 
+            [
+                { id: "dinner", name: "Traditional Dinner" },
+                { id: "seafood", name: "Seafood" },
+                { id: "house", name: "House Specials" },
+                { id: "charbroiler", name: "From the Charbroiler"},
+                { id: "latin", name: "Latin Specialties" },
+                { id: "dinner_side", name: "Sides" },
+            ]
+    };
 
+    const allergenOptions = [
+        "Gluten", "Nuts", "Dairy", "Eggs", "Wheat", "Soy", "Fish", "Shellfish"
+      ];
 
     if (error) {
         return (
@@ -120,7 +150,7 @@ const Menu = () => {
                         <select
                             value={activeFilter}
                             onChange={(e) => handleFilterChange(e.target.value)}
-                            className="allergen-dropdown"
+                            className="general-dropdown"
                         >
                             {categories.map((category) => (
                                 <option key={category.id} value={category.id}>
@@ -129,17 +159,57 @@ const Menu = () => {
                             ))}
                         </select>
 
-                        <select
-                            value={selectedAllergen}
-                            onChange={handleAllergenChange}
-                            className="allergen-dropdown"
-                        >
-                            {allergens.map((allergen, index) => (
-                                <option key={index} value={allergen.toLowerCase()}>
-                                    {allergen}
+                        {activeFilter && subCategories[activeFilter] && (
+                            <select
+                            value={activeSubFilter}
+                            onChange={(e) => handleSubFilterChange(e.target.value)}
+                            className="general-dropdown"
+                            >
+                            {/* {console.log(activeSubFilter == "lunch_special")} */}
+                            <option> All </option>
+                            {subCategories[activeFilter]?.map((sub) => (
+                                <option key={sub.id} value={sub.id}>
+                                    {sub.name}
                                 </option>
                             ))}
-                        </select>
+                            </select>
+                        )}
+
+                        
+
+                        {/* <div className="custom-allergen-dropdown">
+                            <button
+                                type="button"
+                                className="general-dropdown"
+                                onClick={() => setShowAllergenDropdown(!showAllergenDropdown)}
+                            >
+                                {selectedAllergens.length > 0
+                                    ? `Filtered: ${selectedAllergens.join(", ")}`
+                                    : "Filter by Allergens"}
+                            </button>
+                            {showAllergenDropdown && (
+                                <div className="checkbox-dropdown">
+                                    {allergenOptions.map((allergen) => (
+                                        <label key={allergen} className="checkbox-option">
+                                            <input
+                                                type="checkbox"
+                                                value={allergen}
+                                                checked={selectedAllergens.includes(allergen)}
+                                                onChange={(e) => {
+                                                    const value = e.target.value;
+                                                    handleAllergenChange((prev) =>
+                                                        prev.includes(value)
+                                                            ? prev.filter((a) => a !== value)
+                                                            : [...prev, value]
+                                                    );
+                                                }}
+                                            />
+                                            {allergen}
+                                        </label>
+                                    ))}
+                                </div>
+                            )}
+                        </div> */}
                     </div>
                 </div>
 
@@ -158,7 +228,7 @@ const Menu = () => {
                                     </div>
                                     <p className="description">{item.description || "A delicious dish from our kitchen"}</p>
                                     
-                                    {(item?.allergens || "").includes("gluten") ? <p className="allergens-tag">Allergens: gluten</p> : <p></p>}
+                                    {/* {(item?.allergens || "").includes("gluten") ? <p className="allergens-tag">Allergens: gluten</p> : <p></p>} */}
 
                                 </div>
                             </div>
@@ -172,6 +242,8 @@ const Menu = () => {
                             onClick={() => {
                                 setSearchTerm("");
                                 setActiveFilter("all");
+                                setActiveSubFilter("all");
+                                setSelectedAllergen([]);
                             }}
                         >
                             Reset Filters
